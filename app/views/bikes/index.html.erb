@@ -1,0 +1,11 @@
+<h1> Look at all these bikes </h1>
+<br>
+<% @bikes.each do |bike| %>
+  <h3> <%= bike.model %> --  <%= bike.make %> </h3>
+  <h4> <%= bike.year %> </h4>
+  <% if bike.code %>
+      <h6> <%= bike.code %>
+    <% end %>
+  <br/>
+  <br/>
+<% end %>
