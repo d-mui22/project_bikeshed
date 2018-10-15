@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+bikes_attributes = [
+  {year: 2003, model: "Electra Glide", make: "Harley Davidson", code: "FLHTC"},
+  {year: 2005, model: "Soft Tail Deluxe", make: "Harley Davidson", code: "FLSTN"},
+  {year: 2007, model: "Road Glide", make: "Harley Davidson", code: "FLTR"},
+  {year: 2018, model: "Sportster Super Low", make: "Harley Davidson", code: "XL883XL"}
+]
+
+bikes_attributes.each do |bike|
+  bike = Bike.create(bike)
+end
