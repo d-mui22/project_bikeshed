@@ -16,12 +16,11 @@ class BikeShowContainer extends Component {
       .then(body => {
         this.setState({bike: body.bike});
       })
+      .catch(error => console.error(`error in fetch: ${error.message}`))
   }
 
 
   render() {
-    let bike = this.state.bike.bike
-
     return(
       <BikeShow
         id={this.state.bike.id}
