@@ -4,4 +4,5 @@ class Bike < ApplicationRecord
   validates :year, presence: true, numericality: true, length: {is: 4}
 
   belongs_to :user
+  has_many :reviews
 end
