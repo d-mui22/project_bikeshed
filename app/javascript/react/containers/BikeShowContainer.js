@@ -29,7 +29,6 @@ class BikeShowContainer extends Component {
         year={this.state.bike.year}
         code={this.state.bike.code}
       />
-
     )
   }
 }

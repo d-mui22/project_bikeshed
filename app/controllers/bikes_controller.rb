@@ -3,7 +3,4 @@ class BikesController < ApplicationController
     @bikes = Bike.all
   end
 
-  def show
-    @bike  = Bike.find(params[:id])
-  end
 end
