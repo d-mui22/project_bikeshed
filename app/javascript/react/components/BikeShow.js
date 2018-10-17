@@ -2,7 +2,7 @@ import React from 'react';
 
 const BikeShow = (props) => {
   return (
-    <div>
+    <div key={props.id}>
       <h2>{props.model}</h2>
       <h3>{props.make}</h3>
       <h3>{props.year}</h3>
