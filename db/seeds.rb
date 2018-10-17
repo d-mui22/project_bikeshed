@@ -6,14 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 bikes_attributes = [
+<<<<<<< HEAD
   {year: 2003, model: "Electra Glide", make: "Harley Davidson", code: "FLHTC", user_id: 1},
   {year: 2005, model: "Soft Tail Deluxe", make: "Harley Davidson", code: "FLSTN", user_id: 2},
   {year: 2007, model: "Road Glide", make: "Harley Davidson", code: "FLTR", user_id: 3},
   {year: 2018, model: "Sportster Super Low", make: "Harley Davidson", code: "XL883XL", user_id: 4}
+=======
+
+>>>>>>> show_page
 ]
 
 bikes_attributes.each do |bike|
   Bike.create(bike)
+<<<<<<< HEAD
 end
 
 reviews_attributes = [
@@ -25,4 +30,6 @@ reviews_attributes = [
 
 reviews_attributes.each do |review|
   Review.create(review)
+=======
+>>>>>>> show_page
 end
