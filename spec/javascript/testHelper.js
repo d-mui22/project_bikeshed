@@ -3,11 +3,12 @@ import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
 import 'jasmine-ajax';
 
+
 Object.assign(global, {
   jasmineEnzyme,
   mount,
   React,
-  shallow,
+  shallow
 });
 
 beforeEach(() => {

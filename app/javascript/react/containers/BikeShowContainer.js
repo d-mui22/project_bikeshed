@@ -22,6 +22,7 @@ class BikeShowContainer extends Component {
 
   render() {
     return(
+    <div>
       <BikeShow
         id={this.state.bike.id}
         make={this.state.bike.make}
@@ -29,6 +30,8 @@ class BikeShowContainer extends Component {
         year={this.state.bike.year}
         code={this.state.bike.code}
       />
+      <h3>jhh</h3>
+      </div>
     )
   }
 }
