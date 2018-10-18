@@ -20,7 +20,7 @@ describe('BikeShowContainer', () =>{
       {bike_id: 2, user_id: 3, body:"Itza great.", rating: 7},
 ]
     let email = "matthew.bowler@gmail.com"
-    let user = nil
+    let user = null
 
 
     fetchMock.get('/api/v1/bikes/1', {
@@ -58,15 +58,10 @@ describe('BikeShowContainer', () =>{
       expect(wrapper.find(reviews)).toBePresent();
     })
   });
-  //   it('should render a form', () =>{
-  //     setTimeout(() => {
-  //     expect(wrapper.find("Written Review of Bike")).toBePresent();
-  //   })
-  // });
+    it('should render a form', () =>{
+      setTimeout(() => {
+      expect(wrapper.find("Written Review of Bike")).toBePresent();
+    })
+  });
 
-  //     it('should render an h6 tag', () => {
-  //       setTimeout(() => {
-  //   expect(wrapper.find('')).toBePresent();
-  // });
-// });
 });
