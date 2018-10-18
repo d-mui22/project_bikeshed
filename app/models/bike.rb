@@ -5,4 +5,6 @@ class Bike < ApplicationRecord
 
   belongs_to :user
   has_many :reviews
+
+  mount_uploader :profile_photo, ProfilePhotoUploader
 end

@@ -13,7 +13,6 @@ class Api::V1::ReviewsController < ApiController
 
   def create
     review = Review.new(body: params[:body], rating: params[:rating], user_id: params[:user_id], bike_id: params[:bike_id])
-    binding.pry
     if review.save
       render json: {review: review}
     else
