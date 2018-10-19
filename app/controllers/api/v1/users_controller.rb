@@ -1,6 +1,5 @@
 class Api::V1::UsersController < ApiController
-  def show
-    render json: {users: current_user}
+  def index
+    render json: current_user
   end
-
 end

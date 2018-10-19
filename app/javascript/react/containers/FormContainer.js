@@ -6,8 +6,7 @@ class FormContainer extends Component {
     this.state = {
       body: "",
       rating: "",
-      current_user_id: "",
-      email: ""
+      current_user: {}
     }
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
@@ -15,12 +14,11 @@ class FormContainer extends Component {
   }
 
 componentDidMount() {
-  fetch(`/api/v1/users/${this.props.id}`)
+  fetch(`/api/v1/users`)
     .then(response => response.json())
     .then(body => {
       this.setState({
-        current_user_id: body.users.id,
-        email: body.users.email
+        current_user: body
       })
 
     })
@@ -38,12 +36,11 @@ handleSubmit(event){
   createdReview = {
     body: this.state.body,
     rating: this.state.rating,
-    user_id: this.state.current_user_id,
+    user: this.state.current_user,
     bike_id: this.props.bike_id,
-    email: this.state.email
   }
   this.props.addSubmission(createdReview)
-  this.setState({body: "", rating: ""})
+  this.setState({body: "", rating: "", current_user: {}})
 }
 
 render() {

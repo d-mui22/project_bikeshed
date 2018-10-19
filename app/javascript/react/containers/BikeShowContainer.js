@@ -8,7 +8,7 @@ class BikeShowContainer extends Component {
     this.state = {
       bike: {},
       reviews: [],
-      email: ""
+      user: {}
     }
     this.addSubmission = this.addSubmission.bind(this)
   }
@@ -17,17 +17,16 @@ class BikeShowContainer extends Component {
     fetch(`/api/v1/bikes/${this.props.params.id}`)
       .then(response => response.json())
       .then(body => {
-        this.setState({bike: body.bike});
-      })
-    fetch(`/api/v1/reviews/${this.props.params.id}`)
-      .then(response => response.json())
-      .then(body => {
-        this.setState({reviews: body.reviews})
+        this.setState({
+          bike: body.bike,
+          reviews: body.bike.reviews,
+          user: body.bike.user
+        });
       })
   }
 
   addSubmission(submission) {
-
+    debugger
     this.setState({reviews: this.state.reviews.concat(submission)})
     fetch ('/api/v1/reviews', {
       credentials: 'same-origin',
@@ -35,6 +34,7 @@ class BikeShowContainer extends Component {
       body: JSON.stringify(submission),
       headers: { 'Content-Type': 'application/json' }
     })
+
     .then(response => {
       if (response.ok) {
         return response;
@@ -46,6 +46,7 @@ class BikeShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       alert("Success!")
       this.setState({email: body.reviews.email})
     })
@@ -54,9 +55,9 @@ class BikeShowContainer extends Component {
 
   render() {
     let reviews = this.state.reviews.map(review => {
+      debugger
       return(
         <ReviewTile
-          statefulEmail={this.state.email}
           email={review.user_email}
           id={review.id}
           user_id={review.user_id}
@@ -74,10 +75,10 @@ class BikeShowContainer extends Component {
           model={this.state.bike.model}
           year={this.state.bike.year}
           code={this.state.bike.code}
+          // image_url={this.state.bike.profile_photo.url}
         />
         {reviews}
         <FormContainer
-          bike_id= {this.state.bike.id}
           id = {this.props.params.id}
           addSubmission = {this.addSubmission}
           />
