@@ -12,7 +12,11 @@ class Api::V1::ReviewsController < ApiController
 
   def create
     data = JSON.parse(request.body.read)
-    review = Review.create(body: data["body"], rating: data["rating"], user_id: data["user_id"], email: data["email"], bike_id: data["bike_id"])
-    render json: review, adapter: :json
+    review = Review.new(body: data["body"], rating: data["rating"], user_id: data["user_id"], email: data["email"], bike_id: data["bike_id"])
+    if review.save
+      render json: review, adapter: :json
+    else
+      render json: review.errors.full_messages.join(', ')
+    end
   end
 end
