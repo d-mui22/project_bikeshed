@@ -6,73 +6,117 @@ import fetchMock from 'fetch-mock'
 
 describe('BikeShowContainer', () =>{
   let wrapper;
-  let bike;
-  // let reviews;
-  // let email;
-  // let user;
-  // let reviewsContainer;
+  let bikeData;
+  let userData;
+  let rating;
   beforeEach(() =>{
     bikeData = {
-      bike: {
-        id: 1,
-        year: 2003,
-        make: "Harley Davidson",
-        model: "Electra Glide",
-        code: "FLHTC",
-        created_at: "2018-10-17T18:48:14.235Z",
-        updated_at: "2018-10-17T18:48:14.235Z",
-        user_id: 1
+
+ bike: {
+     id: 1,
+     year: 2003,
+     make: "Harley Davidson",
+     model: "Electra Glide",
+     code: "FLHTC",
+     user_id: 1,
+     profile_photo: {
+         url: null
+     },
+     created_at: "2018-10-17T18:48:14.235Z",
+     reviews: [
+         {
+             id: 1,
+             body: "Itza okay.",
+             rating: 6,
+             user_email: "someone3@someplace.com",
+             created_at: "2018-10-17T18:48:14.282Z",
+             user_id: 4
+         }
+     ],
+     user: {
+         id: 1,
+         email: "kevinmccarthy01@comcast.net",
+         created_at: "2018-10-17T18:33:23.105Z",
+         updated_at: "2018-10-17T18:33:23.105Z",
+         profile_photo: {
+             url: null
+         }
+     }
+   }
+}
+
+userData = {
+  user: {
+    id: 5,
+    email: "oiahwhangoufn@gmail.com",
+    created_at: "2018-10-19T20:32:35.037Z",
+    updated_at: "2018-10-19T20:32:35.037Z",
+    profile_photo: {
+      url: null
     }
   }
-    // reviews = [{bike_id: 1, user_id: 4, body:"Itza okay.", rating: 6},
-    //  {bike_id: 1, user_id: 4, body:"Itza okay.", rating: 6}]
-    //
-    // email = "matthew.bowler@gmail.com"
-    // user = null
+}
 
-
-    fetchMock.get('/api/v1/bikes/1', {
-        status: 200,
-        body: bikeData
-      });
-    // fetchMock.get('/api/v1/reviews/1', {
-    //     status: 200,
-    //     body: reviews
-    //   });
-    // fetchMock.get('/api/v1/users/1', {
-    //     status: 200,
-    //     body: user
-    //   });
-    // fetchMock.get('/api/v1/reviews', {
-    //     status: 200,
-    //     body: email
-    //   });
-
-    wrapper = mount(<BikeShowContainer
-      params ={ {id: bikeData.id} }
-        />
-      );
+  fetchMock.get('/api/v1/bikes/1', {
+      status: 200,
+      body: bikeData
+    });
+  fetchMock.get('/api/v1/users', {
+      status: 200,
+      body: userData
     });
 
-    afterEach(fetchMock.restore)
+  wrapper = mount(<BikeShowContainer
+    params ={ {id: bikeData.bike.id} }
+      />
+    );
+  });
 
-    it('should render a bike', (done) => {
-      setTimeout(() => {
-      expect(wrapper.text()).toMatch(bikeData.bike.model);
-      done()
+  afterEach(fetchMock.restore)
+
+  it('should render bike model in h2 tags', (done) =>{
+    setTimeout(() => {
+      // console.log(wrapper.debug())
+      expect(wrapper.containsMatchingElement(<h2>Electra Glide</h2>)).toBeTruthy()
+    done()
     }, 0)
   });
-  //   it('should render reviews', (done) =>{
-  //     setTimeout(() => {
-  //     expect(wrapper.find(reviews)).toHaveLength(2);
-  //     done()
-  //   }, 0)
-  // });
-  //   it('should render a form', (done) =>{
-  //     setTimeout(() => {
-  //     expect(wrapper.find("Written Review of Bike")).toBePresent();
-  //     done()
-  //   }, 100)
-  // });
-
+  it('should render bike make in h3 tags', (done) =>{
+    setTimeout(() => {
+      // console.log(wrapper.debug())
+      expect(wrapper.containsMatchingElement(<h3>Harley Davidson</h3>)).toBeTruthy()
+    done()
+    }, 0)
+  });
+  it('should render bike year in h3 tags', (done) =>{
+    setTimeout(() => {
+      // console.log(wrapper.debug())
+      expect(wrapper.containsMatchingElement(<h3>{2003}</h3>)).toBeTruthy()
+    done()
+    }, 0)
+  });
+  it('should render bike code in h3 tags', (done) =>{
+    setTimeout(() => {
+      // console.log(wrapper.debug())
+      expect(wrapper.containsMatchingElement(<h3>FLHTC</h3>)).toBeTruthy()
+    done()
+    }, 0)
+  });
+  it('should render user email for review in h6 tags', (done) =>{
+    setTimeout(() => {
+      // console.log(wrapper.debug())
+      expect(wrapper.containsMatchingElement(<h6> someone3@someplace.com</h6>)).toBeTruthy()
+    done()
+    }, 0)
+  });
+  it('should render review rating in p tags', (done) =>{
+    setTimeout(() => {
+      // console.log(wrapper.debug())
+      rating = wrapper.find('.rating')
+      // console.log(rating.debug())
+      expect(rating.text()).toEqual(" Itza okay. - 6 stars")
+    done()
+    }, 0)
+  });
+  
 });

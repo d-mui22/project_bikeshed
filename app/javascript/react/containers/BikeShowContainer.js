@@ -7,8 +7,7 @@ class BikeShowContainer extends Component {
     super(props);
     this.state = {
       bike: {},
-      reviews: [],
-      user: {}
+      reviews: []
     }
     this.addSubmission = this.addSubmission.bind(this)
   }
@@ -19,16 +18,16 @@ class BikeShowContainer extends Component {
       .then(body => {
         this.setState({
           bike: body.bike,
-          reviews: body.bike.reviews,
-          user: body.bike.user
+          reviews: body.bike.reviews
         });
-      })
+    })
   }
 
+
   addSubmission(submission) {
-    debugger
+
     this.setState({reviews: this.state.reviews.concat(submission)})
-    fetch ('/api/v1/reviews', {
+    fetch('/api/v1/reviews', {
       credentials: 'same-origin',
       method: "post",
       body: JSON.stringify(submission),
@@ -46,16 +45,15 @@ class BikeShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       alert("Success!")
-      this.setState({email: body.reviews.email})
+      // this.setState({reviews: this.state.reviews.concat(body.reviews)})
     })
     .catch(error => console.error('Error:', error));
   }
 
   render() {
     let reviews = this.state.reviews.map(review => {
-      debugger
+      
       return(
         <ReviewTile
           email={review.user_email}
@@ -79,7 +77,7 @@ class BikeShowContainer extends Component {
         />
         {reviews}
         <FormContainer
-          id = {this.props.params.id}
+          bike_id={this.state.bike.id}
           addSubmission = {this.addSubmission}
           />
       </div>
