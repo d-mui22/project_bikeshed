@@ -24,7 +24,6 @@ class BikeShowContainer extends Component {
   }
 
   addSubmission(submission) {
-    this.setState({reviews: this.state.reviews.concat(submission)})
     fetch('/api/v1/reviews', {
       credentials: 'same-origin',
       method: "post",
@@ -47,8 +46,9 @@ class BikeShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       alert("Success!")
-      // this.setState({reviews: this.state.reviews.concat(body.reviews)})
+      this.setState({reviews: this.state.reviews.concat(body.reviews)})
     })
     .catch(error => console.error('Error:', error));
   }

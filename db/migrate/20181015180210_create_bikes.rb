@@ -5,6 +5,7 @@ class CreateBikes < ActiveRecord::Migration[5.2]
       t.string :make, null:false
       t.string :model, null:false
       t.string :code
+      t.belongs_to :user, null:false
       t.timestamps null:false
     end
   end

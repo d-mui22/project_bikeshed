@@ -3,6 +3,8 @@ class CreateReviews < ActiveRecord::Migration[5.2]
     create_table :reviews do |t|
       t.belongs_to :bike, null: false
       t.belongs_to :user, null: false
+      t.string :body
+      t.integer :rating, null: false
       t.timestamps
     end
   end
