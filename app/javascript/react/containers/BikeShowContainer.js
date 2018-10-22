@@ -23,9 +23,7 @@ class BikeShowContainer extends Component {
     })
   }
 
-
   addSubmission(submission) {
-
     this.setState({reviews: this.state.reviews.concat(submission)})
     fetch('/api/v1/reviews', {
       credentials: 'same-origin',
