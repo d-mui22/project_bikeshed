@@ -14,26 +14,32 @@ class BikeShowContainer extends Component {
 
   componentDidMount() {
     fetch(`/api/v1/bikes/${this.props.params.id}`)
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
       .then(response => response.json())
       .then(body => {
         this.setState({
           bike: body.bike,
           reviews: body.bike.reviews
-        });
+      });
     })
+    .catch(error => console.error('Error:', error));
   }
 
-
   addSubmission(submission) {
-
-    this.setState({reviews: this.state.reviews.concat(submission)})
     fetch('/api/v1/reviews', {
       credentials: 'same-origin',
       method: "post",
       body: JSON.stringify(submission),
       headers: { 'Content-Type': 'application/json' }
     })
-
     .then(response => {
       if (response.ok) {
         return response;
@@ -45,15 +51,14 @@ class BikeShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      alert("Success!")
-      // this.setState({reviews: this.state.reviews.concat(body.reviews)})
+      this.setState({reviews: this.state.reviews.concat(body.review)})
     })
     .catch(error => console.error('Error:', error));
   }
 
   render() {
     let reviews = this.state.reviews.map(review => {
-      
+
       return(
         <ReviewTile
           email={review.user_email}
@@ -73,7 +78,6 @@ class BikeShowContainer extends Component {
           model={this.state.bike.model}
           year={this.state.bike.year}
           code={this.state.bike.code}
-          // image_url={this.state.bike.profile_photo.url}
         />
         {reviews}
         <FormContainer

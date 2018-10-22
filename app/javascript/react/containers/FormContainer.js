@@ -15,14 +15,23 @@ class FormContainer extends Component {
 
 componentDidMount() {
   fetch(`/api/v1/users`)
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
     .then(response => response.json())
     .then(body => {
       this.setState({
         current_user: body
       })
-
     })
-}
+    .catch(error => console.error('Error:', error));
+  }
 
 handleDescriptionChange(event) {
   this.setState({body: event.target.value})
@@ -59,10 +68,9 @@ render() {
         handleChange = {this.handleRatingChange}
         name="rating"
       />
-    <input type="submit" className="button" value="Submit "/>
+      <input type="submit" className="button" value="Submit "/>
     </form>
-  )
-}
-
+    )
+  }
 }
 export default FormContainer

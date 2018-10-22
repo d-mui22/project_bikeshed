@@ -9,6 +9,12 @@ describe('BikeShowContainer', () =>{
   let bikeData;
   let userData;
   let rating;
+  let model;
+  let make;
+  let year;
+  let code;
+  let email;
+
   beforeEach(() =>{
     bikeData = {
       bike: {
@@ -75,44 +81,42 @@ userData = {
 
   it('should render bike model in h2 tags', (done) =>{
     setTimeout(() => {
-      // console.log(wrapper.debug())
-      expect(wrapper.containsMatchingElement(<h2>Electra Glide</h2>)).toBeTruthy()
+      model = wrapper.find('.model')
+      expect(model.text()).toEqual("Electra Glide")
     done()
     }, 0)
   });
   it('should render bike make in h3 tags', (done) =>{
     setTimeout(() => {
-      // console.log(wrapper.debug())
-      expect(wrapper.containsMatchingElement(<h3>Harley Davidson</h3>)).toBeTruthy()
+      make = wrapper.find('.make')
+      expect(make.text()).toEqual("Harley Davidson")
     done()
     }, 0)
   });
   it('should render bike year in h3 tags', (done) =>{
     setTimeout(() => {
-      // console.log(wrapper.debug())
-      expect(wrapper.containsMatchingElement(<h3>{2003}</h3>)).toBeTruthy()
+      year = wrapper.find('.year')
+      expect(year.text()).toEqual("2003")
     done()
     }, 0)
   });
   it('should render bike code in h3 tags', (done) =>{
     setTimeout(() => {
-      // console.log(wrapper.debug())
-      expect(wrapper.containsMatchingElement(<h3>FLHTC</h3>)).toBeTruthy()
+      code = wrapper.find('.code')
+      expect(code.text()).toEqual("FLHTC")
     done()
     }, 0)
   });
   it('should render user email for review in h6 tags', (done) =>{
     setTimeout(() => {
-      // console.log(wrapper.debug())
-      expect(wrapper.containsMatchingElement(<h6> someone3@someplace.com</h6>)).toBeTruthy()
+      email = wrapper.find('.email')
+      expect(email.text()).toEqual(" someone3@someplace.com")
     done()
     }, 0)
   });
   it('should render review rating in p tags', (done) =>{
     setTimeout(() => {
-      // console.log(wrapper.debug())
       rating = wrapper.find('.rating')
-      // console.log(rating.debug())
       expect(rating.text()).toEqual(" Itza okay. - 6 stars")
     done()
     }, 0)
