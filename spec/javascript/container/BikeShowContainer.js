@@ -11,17 +11,16 @@ describe('BikeShowContainer', () =>{
   let rating;
   beforeEach(() =>{
     bikeData = {
-
- bike: {
-     id: 1,
-     year: 2003,
-     make: "Harley Davidson",
-     model: "Electra Glide",
-     code: "FLHTC",
-     user_id: 1,
-     profile_photo: {
-         url: null
-     },
+      bike: {
+       id: 1,
+       year: 2003,
+       make: "Harley Davidson",
+       model: "Electra Glide",
+       code: "FLHTC",
+       user_id: 1,
+       profile_photo: {
+           url: null
+       },
      created_at: "2018-10-17T18:48:14.235Z",
      reviews: [
          {
@@ -118,5 +117,5 @@ userData = {
     done()
     }, 0)
   });
-  
+
 });
