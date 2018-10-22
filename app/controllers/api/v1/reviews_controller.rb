@@ -4,7 +4,12 @@ class Api::V1::ReviewsController < ApiController
     @reviews = @bike.reviews
     render json: @reviews
   end
-  
+
+  def index
+    @reviews = Review.all
+    render json: @reviews
+  end
+
   def create
     if Rails.env.test?
       review = Review.new(rating: params[:rating], user_id: params[:user_id], bike_id: params[:bike_id], email: params[:email])
