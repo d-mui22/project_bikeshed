@@ -1,11 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-<<<<<<< HEAD
 ruby '2.4.5'
-=======
-ruby '2.3.8'
->>>>>>> origin/enzyme_tests_take_2
 
 gem 'active_model_serializers'
 gem "carrierwave"
