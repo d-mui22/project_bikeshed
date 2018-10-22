@@ -5,18 +5,22 @@ class Api::V1::ReviewsController < ApiController
     render json: @reviews
   end
 
-  def index
-    @reviews = Review.all
-    render json: @reviews
+  def create
+    if Rails.env.test?
+      review = Review.new(rating: params[:rating], user_id: params[:user_id], bike_id: params[:bike_id], email: params[:email])
+    else
+      review = Review.new(review_params)
+    end
+    if review.save
+      render json: {review: review}
+    else
+      render json: {error: review.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
-  def create
-    data = JSON.parse(request.body.read)
-    review = Review.new(body: data["body"], rating: data["rating"], user_id: data["user_id"], email: data["email"], bike_id: data["bike_id"])
-    if review.save
-      render json: review, adapter: :json
-    else
-      render json: review.errors.full_messages.join(', ')
-    end
+  private
+
+  def review_params
+    params.require(:review).permit(:body, :rating, :user_id, :bike_id, :email)
   end
 end

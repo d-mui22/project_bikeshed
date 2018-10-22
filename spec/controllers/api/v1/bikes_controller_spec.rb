@@ -12,9 +12,9 @@ RSpec.describe Api::V1::BikesController, type: :controller do
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-      expect(returned_json["make"]).to eq "Yamasaki"
-      expect(returned_json["model"]).to eq "Something"
-      expect(returned_json["year"]).to eq 2020
+      expect(returned_json["bike"]["make"]).to eq "Yamasaki"
+      expect(returned_json["bike"]["model"]).to eq "Something"
+      expect(returned_json["bike"]["year"]).to eq 2020
     end
   end
 end

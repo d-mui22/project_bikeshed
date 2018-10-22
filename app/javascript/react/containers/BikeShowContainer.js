@@ -7,8 +7,7 @@ class BikeShowContainer extends Component {
     super(props);
     this.state = {
       bike: {},
-      reviews: [],
-      email: ""
+      reviews: []
     }
     this.addSubmission = this.addSubmission.bind(this)
   }
@@ -17,24 +16,28 @@ class BikeShowContainer extends Component {
     fetch(`/api/v1/bikes/${this.props.params.id}`)
       .then(response => response.json())
       .then(body => {
-        this.setState({bike: body.bike});
-      })
-    fetch(`/api/v1/reviews/${this.props.params.id}`)
-      .then(response => response.json())
-      .then(body => {
-        this.setState({reviews: body.reviews})
-      })
+        this.setState({
+          bike: body.bike,
+          reviews: body.bike.reviews
+        });
+    })
   }
+
 
   addSubmission(submission) {
 
     this.setState({reviews: this.state.reviews.concat(submission)})
-    fetch ('/api/v1/reviews', {
+    fetch('/api/v1/reviews', {
       credentials: 'same-origin',
       method: "post",
       body: JSON.stringify(submission),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
     })
+
     .then(response => {
       if (response.ok) {
         return response;
@@ -47,16 +50,16 @@ class BikeShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       alert("Success!")
-      this.setState({email: body.reviews.email})
+      // this.setState({reviews: this.state.reviews.concat(body.reviews)})
     })
     .catch(error => console.error('Error:', error));
   }
 
   render() {
     let reviews = this.state.reviews.map(review => {
+
       return(
         <ReviewTile
-          statefulEmail={this.state.email}
           email={review.user_email}
           id={review.id}
           user_id={review.user_id}
@@ -74,11 +77,11 @@ class BikeShowContainer extends Component {
           model={this.state.bike.model}
           year={this.state.bike.year}
           code={this.state.bike.code}
+          // image_url={this.state.bike.profile_photo.url}
         />
         {reviews}
         <FormContainer
-          bike_id= {this.state.bike.id}
-          id = {this.props.params.id}
+          bike_id={this.state.bike.id}
           addSubmission = {this.addSubmission}
           />
       </div>

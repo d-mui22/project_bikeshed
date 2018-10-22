@@ -35,14 +35,15 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
   describe "POST#create" do
     it "creates a new review" do
-      post_json = a_review.to_json
+      post_json = { rating: "3", user_id: a_user.id, bike_id: first_bike.id, email: "wow@gmail.com" }
       prev_count = Review.count
-      post(:create, body: post_json)
+      post(:create, params: post_json)
       expect(Review.count).to eq(prev_count + 1)
     end
+
     it "returns the json of the new review" do
-      post_json = a_review.to_json
-      post(:create, body: post_json)
+      post_json = { rating: "3", user_id: a_user.id, bike_id: first_bike.id, email: "wow@gmail.com" }
+      post(:create, params: post_json)
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
