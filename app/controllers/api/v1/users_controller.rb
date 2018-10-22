@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApiController
   def show
-    render json: {users: current_user}
+    render json: User.find(params[:id])
   end
 
 end

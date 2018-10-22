@@ -3,7 +3,7 @@ require_relative '../../app/models/user'
 
 RSpec.describe User, type: :model do
   it "is valid with valid attributes" do
-    expect(User.new(email: "wow@wow.com", password: "asdfasdf", encrypted_password: "wowowowoowow")).to be_valid
+    expect(User.new(email: "wow22@wow.com", password: "asdfasdf", encrypted_password: "wowowowoowow")).to be_valid
   end
   it "is not valid without an email" do
     user = User.new(email: nil)

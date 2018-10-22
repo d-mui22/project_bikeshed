@@ -1,8 +1,7 @@
 class Api::V1::ReviewsController < ApiController
   def show
-      @bike = Bike.find(params['id'])
-      @reviews = @bike.reviews
-
+    @bike = Bike.find(params['id'])
+    @reviews = @bike.reviews
     render json: @reviews
   end
 
@@ -12,11 +11,8 @@ class Api::V1::ReviewsController < ApiController
   end
 
   def create
-    review = Review.new(body: params[:body], rating: params[:rating], user_id: params[:user_id], bike_id: params[:bike_id])
-    if review.save
-      render json: {review: review}
-    else
-      render json: {error: review.errors.full_messages}, status: :unprocessable_entity
-    end
+    data = JSON.parse(request.body.read)
+    review = Review.create(body: data["body"], rating: data["rating"], user_id: data["user_id"], email: data["email"], bike_id: data["bike_id"])
+    render json: review, adapter: :json
   end
 end
