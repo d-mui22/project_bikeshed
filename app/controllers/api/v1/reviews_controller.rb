@@ -12,7 +12,6 @@ class Api::V1::ReviewsController < ApiController
   end
 
   def create
-
     if Rails.env.test?
       review = Review.new(rating: params[:rating], user_id: params[:user_id], bike_id: params[:bike_id], email: params[:email])
     else
