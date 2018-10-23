@@ -10,7 +10,6 @@ feature 'user has an account and checks out their profile' do
     click_button 'Sign up'
     expect(page).to have_content('Welcome! You have signed up successfully.')
     expect(page).to have_content('Sign Out')
-    save_and_open_page
     click_link 'Profile'
     expect(page).to have_content("john@example.com")
   end

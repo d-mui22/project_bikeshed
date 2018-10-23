@@ -5,9 +5,5 @@ class ReviewSerializer < ActiveModel::Serializer
     "#{object.user.email}"
   end
 
-  # def user
-  #   "#{object.user.id}"
-  # end
-
   belongs_to :user
 end

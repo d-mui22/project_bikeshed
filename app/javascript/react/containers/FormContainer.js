@@ -36,11 +36,12 @@ handleSubmit(event){
   createdReview = {
     body: this.state.body,
     rating: this.state.rating,
-    user: this.state.current_user,
+    user_email: this.state.current_user.email,
     bike_id: this.props.bike_id,
+    user_id: this.state.current_user.id
   }
   this.props.addSubmission(createdReview)
-  this.setState({body: "", rating: "", current_user: {}})
+  this.setState({body: "", rating: ""})
 }
 
 render() {
