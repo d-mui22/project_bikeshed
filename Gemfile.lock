@@ -452,7 +452,11 @@ DEPENDENCIES
   webpacker (~> 3.3)
 
 RUBY VERSION
+<<<<<<< HEAD
    ruby 2.3.8p459
+=======
+   ruby 2.4.5p335
+>>>>>>> 3c1c523a74db4422e33de95f88fe0ee3daeb6104
 
 BUNDLED WITH
    1.16.6

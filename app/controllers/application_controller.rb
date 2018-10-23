@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
  end
 
  def after_sign_in_path_for(resource)
+<<<<<<< HEAD
     request.env['omniauth.origin'] || stored_location_for(resource) || user_path(resource)
   end
+=======
+   request.env['omniauth.origin'] || stored_location_for(resource) || user_path(resource)
+ end
+
+>>>>>>> 3c1c523a74db4422e33de95f88fe0ee3daeb6104
 end

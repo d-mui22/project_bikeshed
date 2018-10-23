@@ -38,7 +38,11 @@ class BikeShowContainer extends Component {
       credentials: 'same-origin',
       method: "post",
       body: JSON.stringify(submission),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
     })
     .then(response => {
       if (response.ok) {
@@ -51,7 +55,13 @@ class BikeShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+<<<<<<< HEAD
       this.setState({reviews: this.state.reviews.concat(body.review)})
+=======
+      debugger
+      alert("Success!")
+      this.setState({reviews: this.state.reviews.concat(body.reviews)})
+>>>>>>> 3c1c523a74db4422e33de95f88fe0ee3daeb6104
     })
     .catch(error => console.error('Error:', error));
   }
