@@ -1,14 +1,15 @@
 class Api::V1::UsersController < ApiController
-  before_action :authenticate_user!
 
   def index
-    render json: current_user
+    if current_user
+      render json: current_user
+    else
+      render json: {error: "No one is signed in!"}
+    end
   end
 
-  skip_before_action :authenticate_user!
 
   def show
     render json: User.find(params[:id])
   end
-
 end

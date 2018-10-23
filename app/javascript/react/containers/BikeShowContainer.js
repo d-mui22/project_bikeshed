@@ -55,13 +55,8 @@ class BikeShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-<<<<<<< HEAD
-      this.setState({reviews: this.state.reviews.concat(body.review)})
-=======
-      debugger
       alert("Success!")
       this.setState({reviews: this.state.reviews.concat(body.reviews)})
->>>>>>> 3c1c523a74db4422e33de95f88fe0ee3daeb6104
     })
     .catch(error => console.error('Error:', error));
   }
@@ -72,7 +67,7 @@ class BikeShowContainer extends Component {
       return(
         <ReviewTile
           email={review.user_email}
-          id={review.id}
+          key={review.id}
           user_id={review.user_id}
           body={review.body}
           rating={review.rating}

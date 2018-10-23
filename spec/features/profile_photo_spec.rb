@@ -10,11 +10,6 @@ feature "profile photo" do
     fill_in "Password confirmation", with: "boomstick!3vilisd3ad"
     attach_file :user_profile_photo, "#{Rails.root}/spec/support/images/image.png"
     click_button "Sign up"
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 3c1c523a74db4422e33de95f88fe0ee3daeb6104
     expect(page).to have_content("Bike Reviews")
     expect(page).to have_css("img[src*='image.png']")
   end

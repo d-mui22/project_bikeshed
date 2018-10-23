@@ -20,19 +20,19 @@ ActiveRecord::Schema.define(version: 2018_10_19_140323) do
     t.string "make", null: false
     t.string "model", null: false
     t.string "code"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_bikes_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.bigint "bike_id", null: false
     t.bigint "user_id", null: false
-    t.string "body"
-    t.integer "rating", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "body"
+    t.integer "rating", null: false
     t.string "email"
     t.index ["bike_id"], name: "index_reviews_on_bike_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
