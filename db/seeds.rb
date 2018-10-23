@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 bikes_attributes = [
   {year: 2003, model: "Electra Glide", make: "Harley Davidson", code: "FLHTC", user_id: 1},
-  {year: 2005, model: "Soft Tail Deluxe", make: "Harley Davidson", code: "FLSTN", user_id: 1},
-  {year: 2007, model: "Road Glide", make: "Harley Davidson", code: "FLTR", user_id: 1},
-  {year: 2018, model: "Sportster Super Low", make: "Harley Davidson", code: "XL883XL", user_id: 1}
+  {year: 2005, model: "Soft Tail Deluxe", make: "Harley Davidson", code: "FLSTN", user_id: 2},
+  {year: 2007, model: "Road Glide", make: "Harley Davidson", code: "FLTR", user_id: 3},
+  {year: 2018, model: "Sportster Super Low", make: "Harley Davidson", code: "XL883XL", user_id: 4}
 ]
 
 bikes_attributes.each do |bike|
@@ -17,10 +17,10 @@ bikes_attributes.each do |bike|
 end
 
 reviews_attributes = [
-  {bike_id: 1, user_id: 1, body:"Itza okay.", rating: 6, email: "jakemovson@gmail.com"},
-  {bike_id: 2, user_id: 1, body:"Itza great.", rating: 7, email: "jakemovson@gmail.com"},
-  {bike_id: 3, user_id: 1, body:"Itza meh.", rating: 3, email: "jakemovson@gmail.com"},
-  {bike_id: 2, user_id: 1, body:"Itza great.", rating: 8, email: "jakemovson@gmail.com"}
+  {bike_id: 1, user_id: 1, body:"Dating back to 1965 the Electra Glide is the first true factory 'cruiser'.", rating: 7, email: "kevinmccarthy01@comcast.net"},
+  {bike_id: 2, user_id: 2, body:"Wide whitewalls. Massive front fork. Long-barreled shotgun pipes. Clean front light bars with bullet signals. Sculpted chrome headlight and nacelle. Tombstone taillight.", rating: 8, email: "jakemovson@gmail.com"},
+  {bike_id: 3, user_id: 3, body:"Make a hardcore touring statement with a gluttonous helping of style. Fixed nose fairing and dual headlights give this Harley a distinctive look all its own", rating: 7, email: "typehydro@gmail.com"},
+  {bike_id: 4, user_id: 4, body:"You’ll feel the confidence that comes from its low seat, well-balanced stance and low center of gravity.", rating: 8, email: "matthew.bowler123@gmail.com"}
 ]
 
 reviews_attributes.each do |review|

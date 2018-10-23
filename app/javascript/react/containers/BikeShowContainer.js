@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import BikeShow from '../components/BikeShow';
 import ReviewTile from '../components/ReviewTile';
 import FormContainer from './FormContainer';
+import ReviewShowContainer from './ReviewShowContainer';
+
 class BikeShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       bike: {},
-      reviews: []
+      reviews: [],
+      votes: 0
     }
     this.addSubmission = this.addSubmission.bind(this)
   }
@@ -18,7 +21,8 @@ class BikeShowContainer extends Component {
       .then(body => {
         this.setState({
           bike: body.bike,
-          reviews: body.bike.reviews
+          reviews: body.bike.reviews,
+          votes: body.bike.reviews["votes"]
         });
     })
   }
@@ -53,9 +57,55 @@ class BikeShowContainer extends Component {
     .catch(error => console.error('Error:', error));
   }
 
+  addVote(vote) {
+    fetch(`/api/v1/reviews`, {
+      credentials: 'same-origin',
+      method: "post",
+      body: JSON.stringify(vote),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let reviews = this.state.reviews.map(review => {
+        return(
+          <ReviewTile
+            email={review.user_email}
+            id={review.id}
+            user_id={review.user_id}
+            body={review.body}
+            rating={review.rating}
+            created_at={review.created_at}
+          />
+        )
+      })
+      alert("You Voted!")
+      this.setState({reviews: this.state.reviews.votes.concat(body.reviews.votes)})
+    })
+    .catch(error => console.error('Error:', error));
+  }
+
+  onClick() {
+    this.state.vote = review['vote']
+    this.setState({
+      vote: vote_counter
+    })
+  }
+
   render() {
     let reviews = this.state.reviews.map(review => {
-
       return(
         <ReviewTile
           email={review.user_email}
@@ -77,7 +127,8 @@ class BikeShowContainer extends Component {
           code={this.state.bike.code}
           // image_url={this.state.bike.profile_photo.url}
         />
-        {reviews}
+      {reviews}
+      {vote_counter}
         <FormContainer
           bike_id={this.state.bike.id}
           addSubmission = {this.addSubmission}

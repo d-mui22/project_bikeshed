@@ -5,6 +5,7 @@ const ReviewTile = (props) => {
     <div key={props.id}>
       <h6> {props.email}</h6>
       <p className="rating"> {props.body} - {props.rating} stars</p>
+      <button>Vote</button>
     </div>
   )
 
