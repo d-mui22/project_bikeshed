@@ -2,6 +2,7 @@ class Api::V1::ReviewsController < ApiController
   def show
     @bike = Bike.find(params['id'])
     @reviews = @bike.reviews
+
     render json: @reviews
   end
 
@@ -16,6 +17,7 @@ class Api::V1::ReviewsController < ApiController
     else
       review = Review.new(review_params)
     end
+
     if review.save
       render json: review
     else

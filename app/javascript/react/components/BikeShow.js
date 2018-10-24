@@ -11,7 +11,6 @@ const BikeShow = (props) => {
       <h3>Reviews!</h3>
     </div>
   )
-
 }
 
 export default BikeShow;

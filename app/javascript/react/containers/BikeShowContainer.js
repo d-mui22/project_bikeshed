@@ -18,13 +18,23 @@ class BikeShowContainer extends Component {
 
   componentDidMount() {
     fetch(`/api/v1/bikes/${this.props.params.id}`)
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
       .then(response => response.json())
       .then(body => {
         this.setState({
           bike: body.bike,
           reviews: body.bike.reviews
-        });
+      });
     })
+    .catch(error => console.error('Error:', error));
   }
 
   handleDelete(id){
@@ -90,7 +100,7 @@ class BikeShowContainer extends Component {
       return(
         <ReviewTile
           email={review.user_email}
-          id={review.id}
+          key={review.id}
           user_id={review.user_id}
           body={review.body}
           rating={review.rating}

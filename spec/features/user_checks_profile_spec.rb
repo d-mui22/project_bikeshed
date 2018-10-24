@@ -13,6 +13,4 @@ feature 'user has an account and checks out their profile' do
     click_link 'Profile'
     expect(page).to have_content("john@example.com")
   end
-
-
 end
