@@ -3,16 +3,17 @@ import BikeShow from '../components/BikeShow';
 import ReviewTile from '../components/ReviewTile';
 import FormContainer from './FormContainer';
 import ReviewShowContainer from './ReviewShowContainer';
+import update from 'react-addons-update';
 
 class BikeShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       bike: {},
-      reviews: [],
-      votes: 0
+      reviews: []
     }
     this.addSubmission = this.addSubmission.bind(this)
+    this.addVote = this.addVote.bind(this)
   }
 
   componentDidMount() {
@@ -21,10 +22,10 @@ class BikeShowContainer extends Component {
       .then(body => {
         this.setState({
           bike: body.bike,
-          reviews: body.bike.reviews,
-          votes: body.bike.reviews["votes"]
+          reviews: body.bike.reviews
         });
     })
+
   }
 
   addSubmission(submission) {
@@ -50,18 +51,17 @@ class BikeShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       alert("Success!")
       this.setState({reviews: this.state.reviews.concat(body.reviews)})
     })
     .catch(error => console.error('Error:', error));
   }
 
-  addVote(vote) {
-    fetch(`/api/v1/reviews`, {
+  addVote(updatedReview) {
+    fetch(`/api/v1/reviews/${updatedReview.id}`, {
       credentials: 'same-origin',
-      method: "post",
-      body: JSON.stringify(vote),
+      method: "PATCH",
+      body: JSON.stringify(updatedReview),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -79,41 +79,41 @@ class BikeShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      let reviews = this.state.reviews.map(review => {
-        return(
-          <ReviewTile
-            email={review.user_email}
-            id={review.id}
-            user_id={review.user_id}
-            body={review.body}
-            rating={review.rating}
-            created_at={review.created_at}
-          />
-        )
-      })
       alert("You Voted!")
-      this.setState({reviews: this.state.reviews.votes.concat(body.reviews.votes)})
+      debugger
+      let newVote = this.state.reviews.find(x => x.id == body.review.id)
+      let index = this.state.reviews.indexOf(newVote)
+      let votes = newVote.votes
+      votes++
+      newVote.votes=votes
+      this.setState({
+        reviews: update(this.state.reviews, {
+          [index]: {
+            votes: {
+              $set: newVote.votes
+            }}})
+      })
+
     })
     .catch(error => console.error('Error:', error));
   }
 
-  onClick() {
-    this.state.vote = review['vote']
-    this.setState({
-      vote: vote_counter
-    })
-  }
+  handleClick() {
 
+  }
   render() {
     let reviews = this.state.reviews.map(review => {
       return(
         <ReviewTile
+          bike_id={this.props.params.id}
           email={review.user_email}
           id={review.id}
           user_id={review.user_id}
           body={review.body}
           rating={review.rating}
           created_at={review.created_at}
+          votes={review.votes}
+          addVote={this.addVote}
         />
       )
     })
@@ -125,10 +125,8 @@ class BikeShowContainer extends Component {
           model={this.state.bike.model}
           year={this.state.bike.year}
           code={this.state.bike.code}
-          // image_url={this.state.bike.profile_photo.url}
         />
       {reviews}
-      {vote_counter}
         <FormContainer
           bike_id={this.state.bike.id}
           addSubmission = {this.addSubmission}

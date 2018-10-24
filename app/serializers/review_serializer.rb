@@ -1,5 +1,5 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :body, :rating, :user_email, :created_at, :user_id
+  attributes :id, :body, :rating, :user_email, :created_at, :user_id, :votes
 
   def user_email
     "#{object.user.email}"

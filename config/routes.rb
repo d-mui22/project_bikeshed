@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :bikes, only: [:show]
-      resources :reviews, only: [:show, :index, :create]
+      resources :reviews, only: [:show, :index, :create, :update]
       resources :users, only: [:show, :index]
     end
   end
