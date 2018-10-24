@@ -30,12 +30,9 @@ componentDidMount() {
       this.setState({
         current_user: body
       })
-<<<<<<< HEAD
     })
     .then(body => {
       this.props.getCurrentUser(this.state.current_user)
-=======
->>>>>>> master
     })
     .catch(error => console.error('Error:', error));
   }

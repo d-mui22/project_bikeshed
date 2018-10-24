@@ -10,11 +10,7 @@ const ReviewTile = (props) => {
     editButton = <a href={`/reviews/${props.id}/edit`}className="edit"><button>Edit</button></a>
   }
   return (
-<<<<<<< HEAD
     <div key={props.id}>
-=======
-    <div>
->>>>>>> master
       <h6 className="email"> {props.email}</h6>
       <p className="rating"> {props.body} - {props.rating} stars</p>
       {deleteButton}

@@ -1,7 +1,6 @@
 <h1 class="logo"> Look at all these bikes </h1>
 <br>
 <% @bikes.each do |bike| %>
-<<<<<<< HEAD
   <h3>
     <%= link_to bike.model, bike_path(bike) %> --  <%= bike.make %>
   </h3>
@@ -9,11 +8,6 @@
     <%= bike.year %>
   </h4>
 
-=======
-
-  <h3> <%= link_to bike.model, bike_path(bike) %> --  <%= bike.make %> </h3>
-  <h4> <%= bike.year %> </h4>
->>>>>>> master
   <% if bike.code %>
       <h6>
         <%= bike.code %>

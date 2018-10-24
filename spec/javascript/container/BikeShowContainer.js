@@ -14,10 +14,7 @@ describe('BikeShowContainer', () =>{
   let year;
   let code;
   let email;
-<<<<<<< HEAD
   let deleted;
-=======
->>>>>>> master
 
   beforeEach(() =>{
     bikeData = {
