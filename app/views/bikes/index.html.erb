@@ -1,6 +1,7 @@
-<h1> Look at all these bikes </h1>
+<h1 class="logo"> Look at all these bikes </h1>
 <br>
 <% @bikes.each do |bike| %>
+
   <h3> <%= link_to bike.model, bike_path(bike) %> --  <%= bike.make %> </h3>
   <h4> <%= bike.year %> </h4>
   <% if bike.code %>
