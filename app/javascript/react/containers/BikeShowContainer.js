@@ -13,7 +13,6 @@ class BikeShowContainer extends Component {
       reviews: []
     }
     this.addSubmission = this.addSubmission.bind(this)
-    this.addVote = this.addVote.bind(this)
   }
 
   componentDidMount() {
@@ -57,46 +56,6 @@ class BikeShowContainer extends Component {
     .catch(error => console.error('Error:', error));
   }
 
-  addVote(updatedReview) {
-    fetch(`/api/v1/reviews/${updatedReview.id}`, {
-      credentials: 'same-origin',
-      method: "PATCH",
-      body: JSON.stringify(updatedReview),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-        error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      alert("You Voted!")
-      debugger
-      let newVote = this.state.reviews.find(x => x.id == body.review.id)
-      let index = this.state.reviews.indexOf(newVote)
-      let votes = newVote.votes
-      votes++
-      newVote.votes=votes
-      this.setState({
-        reviews: update(this.state.reviews, {
-          [index]: {
-            votes: {
-              $set: newVote.votes
-            }}})
-      })
-
-    })
-    .catch(error => console.error('Error:', error));
-  }
 
   handleClick() {
 
@@ -112,8 +71,6 @@ class BikeShowContainer extends Component {
           body={review.body}
           rating={review.rating}
           created_at={review.created_at}
-          votes={review.votes}
-          addVote={this.addVote}
         />
       )
     })
