@@ -92,11 +92,13 @@ class BikeShowContainer extends Component {
   render() {
     let handleDelete;
     let reviews = this.state.reviews.map(review => {
+
       let deleteReview = () => {
         if (confirm("Are you sure you want to delete this review?")){
           this.handleDelete(review.id)
         }
       }
+
       return(
         <ReviewTile
           email={review.user_email}
