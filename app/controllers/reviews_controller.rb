@@ -1,3 +1,2 @@
 class ReviewsController < ApplicationController
-
 end

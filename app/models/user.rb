@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :bikes
   has_many :reviews
+  validates :encrypted_password, presence: true
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
 end

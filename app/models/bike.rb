@@ -3,6 +3,8 @@ class Bike < ApplicationRecord
   validates :model, presence:true
   validates :year, presence: true, numericality: true, length: {is: 4}
 
-  belongs_to :user
   has_many :reviews
+  belongs_to :user
+
+  mount_uploader :profile_photo
 end

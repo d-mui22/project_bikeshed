@@ -3,10 +3,10 @@ import React from 'react';
 const ReviewTile = (props) => {
   return (
     <div>
-      <h1>{props.rating}</h1>
+      <h6 className="email"> {props.email}</h6>
+      <p className="rating"> {props.body} - {props.rating} stars</p>
     </div>
   )
-
 }
 
 export default ReviewTile;

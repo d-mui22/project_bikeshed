@@ -1,0 +1,13 @@
+<h4><%= @user.email %></h4>
+<p><%= @user.created_at %></p>
+<img class='profile_photo_container' src=<%= @user.profile_photo %>/>
+
+<%= form_for @user, :html => {:multipart => true} do |f| %>
+ <div class="field">
+   <%= f.file_field :profile_photo %>
+ </div>
+
+ <div class='action'>
+   <%= f.submit 'Change Profile Photo' %>
+ </div>
+<% end %>
