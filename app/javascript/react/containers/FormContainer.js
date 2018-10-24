@@ -20,7 +20,9 @@ componentDidMount() {
       this.setState({
         current_user: body
       })
-
+    })
+    .then(body => {
+      this.props.getCurrentUser(this.state.current_user)
     })
 }
 

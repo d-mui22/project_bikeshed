@@ -1,0 +1,27 @@
+<h1>Add a new Bike!</h1>
+<%= form_for @bike do |f| %>
+   <div class="field">
+     <%= f.label :profile_photo %>
+     <%= f.file_field :profile_photo %>
+   </div>
+   <div class="field">
+     <%= f.label :make %>
+     <%= f.text_field :make %>
+   </div>
+   <div class="field">
+     <%= f.label :model %>
+     <%= f.text_field :model %>
+   </div>
+   <div class="field">
+     <%= f.label :year %>
+     <%= f.text_field :year %>
+   </div>
+   <div class="field">
+     <%= f.label :code, "Optional Code" %>
+     <%= f.text_field :code %>
+   </div>
+
+   <div class='action'>
+     <%= f.submit'Make Bike' %>
+   </div>
+ <% end %>
