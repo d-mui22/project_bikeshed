@@ -16,3 +16,7 @@
 
  */
 @import 'react-toastify/dist/ReactToastify.css';
+
+.bike-link {
+  color: black;
+}

@@ -40,9 +40,10 @@
 }
 
 .logo, .model {
-  font-family: 'Metal Mania', cursive;
+  font-family: 'Rye', cursive;
   text-align: center;
-  font-size: 5em;
+  font-size: 3.5em;
+  font-weight: bold;
 }
 
 .review-container {
