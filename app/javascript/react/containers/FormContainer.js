@@ -31,6 +31,9 @@ componentDidMount() {
         current_user: body
       })
     })
+    .then(body => {
+      this.props.getCurrentUser(this.state.current_user)
+    })
     .catch(error => console.error('Error:', error));
   }
 

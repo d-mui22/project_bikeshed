@@ -52,4 +52,22 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       expect(returned_json["review"]["rating"]).to eq 3
     end
   end
+  describe "DELETE" do
+
+    before(:each) do
+      get :show, params: {id: first_bike.id}
+      returned_json = JSON.parse(response.body)
+      delete :destroy, params: {id: returned_json["reviews"][0]["id"]}
+      get :show, params: {id: first_bike.id}
+      @deleted_returned_json = JSON.parse(response.body)
+    end
+
+    it "deletes an existing review" do
+      expect(@deleted_returned_json["reviews"].length).to eq 1
+    end
+
+    it "gets the right status" do
+      expect(response.status).to eq 200
+    end
+  end
 end

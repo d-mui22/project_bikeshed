@@ -7,9 +7,13 @@ class BikeShowContainer extends Component {
     super(props);
     this.state = {
       bike: {},
-      reviews: []
+      reviews: [],
+      current_user: {}
     }
     this.addSubmission = this.addSubmission.bind(this)
+    this.getCurrentUser = this.getCurrentUser.bind(this)
+    this.checkAdmin = this.checkAdmin.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -31,6 +35,30 @@ class BikeShowContainer extends Component {
       });
     })
     .catch(error => console.error('Error:', error));
+  }
+
+  handleDelete(id){
+    event.preventDefault()
+    fetch(`/api/v1/reviews/${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      let newReviews = this.state.reviews.filter(review => review.id != response.review_id)
+      this.setState({reviews: newReviews})
+    })
+  }
+
+  getCurrentUser(payload){
+    this.setState({current_user: payload})
+  }
+
+  checkAdmin(){
+    return this.state.current_user.admin
   }
 
   addSubmission(submission) {
@@ -56,13 +84,20 @@ class BikeShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       alert("Success!")
-      this.setState({reviews: this.state.reviews.concat(body.reviews)})
+      this.setState({reviews: this.state.reviews.concat(body.review)})
     })
     .catch(error => console.error('Error:', error));
   }
 
   render() {
+    let handleDelete;
     let reviews = this.state.reviews.map(review => {
+
+      let deleteReview = () => {
+        if (confirm("Are you sure you want to delete this review?")){
+          this.handleDelete(review.id)
+        }
+      }
 
       return(
         <ReviewTile
@@ -72,13 +107,16 @@ class BikeShowContainer extends Component {
           body={review.body}
           rating={review.rating}
           created_at={review.created_at}
+          checkAdmin={this.checkAdmin}
+          deleteReview={deleteReview}
+          current_user={this.state.current_user}
         />
       )
     })
     return(
       <div>
         <BikeShow
-          id={this.state.bike.id}
+          key={this.state.bike.id}
           make={this.state.bike.make}
           model={this.state.bike.model}
           year={this.state.bike.year}
@@ -86,6 +124,7 @@ class BikeShowContainer extends Component {
         />
         {reviews}
         <FormContainer
+          getCurrentUser={this.getCurrentUser}
           bike_id={this.state.bike.id}
           addSubmission = {this.addSubmission}
           />

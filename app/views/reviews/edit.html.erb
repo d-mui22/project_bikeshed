@@ -1,0 +1,15 @@
+<h1>Edit a Review!</h1>
+  <%= form_for @review do |f| %>
+    <div class="field">
+     <%= f.label :body, "Edit your review!" %>
+     <%= f.text_field :body %>
+    </div>
+    <div class="field">
+     <%= f.label :rating %>
+     <%= f.text_field :rating %>
+    </div>
+
+    <div class='action'>
+     <%= f.submit'Edit Review' %>
+    </div>
+  <% end %>

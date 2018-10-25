@@ -1,12 +1,27 @@
 <h1 class="logo"> Look at all these bikes </h1>
 <br>
 <% @bikes.each do |bike| %>
+  <h3>
+    <%= link_to bike.model, bike_path(bike) %> --  <%= bike.make %>
+  </h3>
+  <h4>
+    <%= bike.year %>
+  </h4>
 
-  <h3> <%= link_to bike.model, bike_path(bike) %> --  <%= bike.make %> </h3>
-  <h4> <%= bike.year %> </h4>
   <% if bike.code %>
-      <h6> <%= bike.code %>
-    <% end %>
+      <h6>
+        <%= bike.code %>
+      </h6>
+  <% end %>
+
+  <% if current_user != nil && current_user.admin? %>
+    <%= link_to 'Edit', edit_bike_path(bike)%>
+    <%= link_to 'Delete', bike_path(bike), method: :delete, data: {confirm: "Are you sure you want to delete?"} %>
+  <% end %>
   <br/>
   <br/>
+<% end %>
+
+<% if current_user != nil && current_user.admin? %>
+  <%= link_to "Create new bike", new_bike_path %>
 <% end %>

@@ -25,6 +25,12 @@ class Api::V1::ReviewsController < ApiController
     end
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    render json: {review_id: @review.id}
+  end
+
   private
 
   def review_params

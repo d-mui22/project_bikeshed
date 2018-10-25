@@ -14,6 +14,7 @@ describe('BikeShowContainer', () =>{
   let year;
   let code;
   let email;
+  let deleted;
 
   beforeEach(() =>{
     bikeData = {
@@ -51,15 +52,14 @@ describe('BikeShowContainer', () =>{
 }
 
 userData = {
-  user: {
-    id: 5,
-    email: "oiahwhangoufn@gmail.com",
-    created_at: "2018-10-19T20:32:35.037Z",
-    updated_at: "2018-10-19T20:32:35.037Z",
-    profile_photo: {
-      url: null
-    }
-  }
+  id: 5,
+  email: "oiahwhangoufn@gmail.com",
+  created_at: "2018-10-19T20:32:35.037Z",
+  updated_at: "2018-10-19T20:32:35.037Z",
+  profile_photo: {
+    url: null
+  },
+  admin: true
 }
 
   fetchMock.get('/api/v1/bikes/1', {
@@ -122,4 +122,12 @@ userData = {
     }, 0)
   });
 
+  it('should render delete button', (done) =>{
+    setTimeout(() => {
+      console.log(wrapper.debug())
+      deleted = wrapper.find('.delete')
+      expect(deleted.text()).toEqual("Delete")
+    done()
+    }, 0)
+  });
 });
