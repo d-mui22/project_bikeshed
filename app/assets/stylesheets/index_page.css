@@ -1,0 +1,38 @@
+.card {
+  border: 2px solid #EE6F2E;
+  border-radius: 10%;
+  text-align: left;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  background-color: grey;
+  text-align: center;
+}
+
+.logo {
+  color: #EE6F2E;
+  background-image: url("bikeshed_images/58480.jpg");
+  background-position: center;
+  padding: 1em;
+  background-repeat: space;
+  background-repeat;
+  /* float: center; */
+  align: middle;
+}
+body {
+  background-color: black;
+  background-size: cover;
+}
+
+.top-bar-logo {
+  background-color: #333333;
+  text-decoration: none;
+}
+
+.bike-photo {
+  height: 300px;
+  border-radius: 10%;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 10px;
+  align:right;
+}

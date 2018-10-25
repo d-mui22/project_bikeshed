@@ -6,6 +6,7 @@ const TextField = (props) => {
       <label htmlFor={props.name}>{props.label}</label>
     <input
       type="text"
+      className="textField"
       name={props.name}
       value={props.content}
       onChange={props.handleChange}

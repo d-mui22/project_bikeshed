@@ -9,13 +9,16 @@
 
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/css?family=Plaster" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Plaster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
 </head>
 <body>
 
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">Bike Reviews</a></h1>
+        <h1><a class="top-bar-logo" href="/">Bike Reviews</a></h1>
       </li>
     </ul>
 
@@ -51,6 +54,5 @@
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
 
-  <%= yield :extra_footer %>
 </body>
 </html>

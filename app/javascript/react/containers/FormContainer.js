@@ -46,7 +46,7 @@ handleRatingChange(event) {
 handleSubmit(event){
   event.preventDefault()
   let createdReview;
-  if(this.state.current_user.id){
+  if(this.state.current_user.id && this.state.body != "" && this.state.rating != "") {
     createdReview = {
       body: this.state.body,
       rating: this.state.rating,
@@ -56,6 +56,10 @@ handleSubmit(event){
     }
     this.props.addSubmission(createdReview)
     this.setState({body: "", rating: ""})
+  }else if(this.state.body == ""){
+    this.setState({error: "Please add a body"})
+  }else if(this.state.rating == ""){
+    this.setState({error: "Please add a rating"})
   }else{
     this.setState({error: "Please log-in to fill out form!"})
   }
@@ -64,7 +68,7 @@ handleSubmit(event){
 render() {
   return (
     <div>
-    <h5>{this.state.error}</h5>
+      <h5 className="form_errors">{this.state.error}</h5>
       <form className="callout" onSubmit={this.handleSubmit}>
         <TextField
           label = "Written Review of Bike"

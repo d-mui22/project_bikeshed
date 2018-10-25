@@ -7,16 +7,14 @@ const ReviewTile = (props) => {
   let editButton
 
   if(props.checkAdmin() || props.user_id == props.current_user.id){
-    deleteButton = <button onClick={props.deleteReview} className="delete">Delete</button>
-    editButton = <a href={`/reviews/${props.id}/edit`}className="edit"><button>Edit</button></a>
+    deleteButton = <i onClick={props.deleteReview} className="fa fa-trash fa-2x delete_button" aria-hidden="true"></i>
+    editButton = <a className="edit_button" href={`/reviews/${props.id}/edit`}><i href={`/reviews/${props.id}/edit`} className="far fa-edit fa-2x"></i></a>
   }
-  
+
   return (
-    <div key={props.id}>
-      <h6 className="email"> {props.email}</h6>
+    <div className="review-container" key={props.id}>
+      <h6 className="email"> {props.email}  {deleteButton} {editButton} </h6>
       <p className="rating"> {props.body} - {props.rating} stars</p>
-      {deleteButton}
-      {editButton}
     </div>
   )
 }

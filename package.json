@@ -8,7 +8,10 @@
     "react": "~15.4.2",
     "react-dom": "~15.4.2",
     "react-router": "~3.2.0",
-    "redbox-react": "1.6.0"
+    "react-simplert": "^0.0.2",
+    "react-toastify": "^4.4.0",
+    "redbox-react": "1.6.0",
+    "sweetalert-react": "^0.4.11"
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",
