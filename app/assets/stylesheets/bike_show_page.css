@@ -7,6 +7,7 @@
   padding-left: 10px;
   color:#78AE62;
 }
+
 .textField {
   color: blue;
 }
@@ -25,15 +26,19 @@
 .edit_button {
   float:right;
 }
+
 .edit_button:link {
   color:white;
 }
+
 .edit_button:visited {
   color:white;
 }
+
 .edit_button:hover {
   color:white;
 }
+
 .logo, .model {
   font-family: 'Metal Mania', cursive;
   text-align: center;
@@ -61,4 +66,5 @@
 .year, .code {
   font-size: 3em;
 }
+
 @import 'react-toastify/dist/ReactToastify.css';

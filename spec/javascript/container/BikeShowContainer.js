@@ -115,10 +115,8 @@ userData = {
     done()
     }, 0)
   });
-
   it('should render delete button', (done) =>{
     setTimeout(() => {
-      console.log(wrapper.debug())
       expect(wrapper.find('.delete_button')).toBePresent()
     done()
     }, 0)
