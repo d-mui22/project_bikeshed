@@ -4,6 +4,7 @@ import ReviewTile from '../../../app/javascript/react/components/ReviewTile'
 import TextField from '../../../app/javascript/react/components/TextField'
 import fetchMock from 'fetch-mock'
 
+
 describe('BikeShowContainer', () =>{
   let wrapper;
   let bikeData;
@@ -86,13 +87,6 @@ userData = {
     done()
     }, 0)
   });
-  it('should render bike make in h3 tags', (done) =>{
-    setTimeout(() => {
-      make = wrapper.find('.make')
-      expect(make.text()).toEqual("Harley Davidson")
-    done()
-    }, 0)
-  });
   it('should render bike year in h3 tags', (done) =>{
     setTimeout(() => {
       year = wrapper.find('.year')
@@ -110,7 +104,7 @@ userData = {
   it('should render user email for review in h6 tags', (done) =>{
     setTimeout(() => {
       email = wrapper.find('.email')
-      expect(email.text()).toEqual(" someone3@someplace.com")
+      expect(email.text()).toEqual(' someone3@someplace.com    ')
     done()
     }, 0)
   });
@@ -121,12 +115,9 @@ userData = {
     done()
     }, 0)
   });
-
   it('should render delete button', (done) =>{
     setTimeout(() => {
-      console.log(wrapper.debug())
-      deleted = wrapper.find('.delete')
-      expect(deleted.text()).toEqual("Delete")
+      expect(wrapper.find('.delete_button')).toBePresent()
     done()
     }, 0)
   });

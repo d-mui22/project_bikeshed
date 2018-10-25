@@ -1,0 +1,70 @@
+.bikeTile {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.leaveReview {
+  padding-left: 10px;
+  color:#78AE62;
+}
+
+.textField {
+  color: blue;
+}
+
+.form_errors {
+  text-align: center;
+  color: #FF5254;
+}
+
+.delete_button {
+  float: right;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.edit_button {
+  float:right;
+}
+
+.edit_button:link {
+  color:white;
+}
+
+.edit_button:visited {
+  color:white;
+}
+
+.edit_button:hover {
+  color:white;
+}
+
+.logo, .model {
+  font-family: 'Metal Mania', cursive;
+  text-align: center;
+  font-size: 5em;
+}
+
+.review-container {
+  padding-left: 10px;
+}
+
+.bike-tile {
+  background-color: orange;
+  text-align: center;
+}
+
+.bike-image {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.code {
+  padding-bottom: 20px;
+}
+
+.year, .code {
+  font-size: 3em;
+}
+
+@import 'react-toastify/dist/ReactToastify.css';
