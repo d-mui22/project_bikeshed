@@ -17,6 +17,7 @@
   background-repeat: space;
   align: middle;
 }
+
 body {
   background-color: black;
   background-size: cover;
@@ -38,8 +39,4 @@ body {
 
 h3, h4, h6 {
   font-family: 'Rye', cursive;
-}
-
-.bike-link {
-  color: black;
 }
