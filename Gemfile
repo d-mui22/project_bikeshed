@@ -5,6 +5,7 @@ ruby '2.4.5'
 
 gem 'active_model_serializers'
 gem "carrierwave"
+gem "fog-aws"
 gem 'fog'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

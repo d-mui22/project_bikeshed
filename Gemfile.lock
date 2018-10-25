@@ -433,6 +433,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot
   fog
+  fog-aws
   foundation-rails (~> 5.0)
   jbuilder (~> 2.5)
   jquery-rails
