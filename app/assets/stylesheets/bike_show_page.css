@@ -61,3 +61,4 @@
 .year, .code {
   font-size: 3em;
 }
+@import 'react-toastify/dist/ReactToastify.css';

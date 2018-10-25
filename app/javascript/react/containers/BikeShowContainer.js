@@ -3,7 +3,6 @@ import BikeShow from '../components/BikeShow';
 import ReviewTile from '../components/ReviewTile';
 import FormContainer from './FormContainer';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 class BikeShowContainer extends Component {
   constructor(props) {
