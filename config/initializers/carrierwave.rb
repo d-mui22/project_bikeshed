@@ -1,3 +1,6 @@
+require "carrierwave"
+require "fog"
+
 CarrierWave.configure do |config|
   config.fog_provider = "fog"
   config.fog_credentials = {
