@@ -11,7 +11,8 @@ class BikeShowContainer extends Component {
       bike: {},
       reviews: [],
       current_user: {},
-      image_url: ''
+      image_url: '',
+      error: ''
     }
     this.addSubmission = this.addSubmission.bind(this)
     this.getCurrentUser = this.getCurrentUser.bind(this)
@@ -111,8 +112,15 @@ class BikeShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.notify()
-      this.setState({reviews: this.state.reviews.concat(body.review)})
+      if (Array.isArray(body)){
+        this.setState({error: body[0]})
+      } else {
+        this.notify()
+        this.setState({
+          reviews: this.state.reviews.concat(body.review),
+          error: ""
+        })
+      }
     })
     .catch(error => console.error('Error:', error));
   }
@@ -153,6 +161,7 @@ class BikeShowContainer extends Component {
         />
         {reviews}
         <h6 className="leaveReview">Leave a review!</h6>
+        <h5 className="form_errors">{this.state.error}</h5>
           <ToastContainer
             position="top-right"
             autoClose={3000}

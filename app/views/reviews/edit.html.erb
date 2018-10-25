@@ -1,11 +1,11 @@
-<h1>Edit a Review!</h1>
+<h1 class="field">Edit a Review!</h1>
   <%= form_for @review do |f| %>
     <div class="field">
-     <%= f.label :body, "Edit your review!" %>
+     <%= f.label :body, "Edit your review!", class: 'edit-review' %>
      <%= f.text_field :body %>
     </div>
     <div class="field">
-     <%= f.label :rating %>
+     <%= f.label :rating, class: 'edit-review' %>
      <%= f.text_field :rating %>
     </div>
 

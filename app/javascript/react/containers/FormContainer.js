@@ -55,7 +55,7 @@ handleSubmit(event){
       user_id: this.state.current_user.id
     }
     this.props.addSubmission(createdReview)
-    this.setState({body: "", rating: ""})
+    this.setState({body: "", rating: "", error: ""})
   }else if(this.state.body == ""){
     this.setState({error: "Please add a body"})
   }else if(this.state.rating == ""){
