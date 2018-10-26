@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authorize_user, except: [:index, :show]
+  before_action :authorize_user, except: [:index, :show, :edit, :update]
   def edit
     @review = Review.find(params[:id])
   end
