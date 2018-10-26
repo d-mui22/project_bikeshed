@@ -40,3 +40,8 @@ body {
 h3, h4, h6 {
   font-family: 'Rye', cursive;
 }
+
+.flash {
+  color: orange;
+  text-align: center;
+}
