@@ -16,3 +16,8 @@
 
  */
 @import 'react-toastify/dist/ReactToastify.css';
+
+.image-container {
+  border: 2px solid orange;
+  border-radius: 50%
+}

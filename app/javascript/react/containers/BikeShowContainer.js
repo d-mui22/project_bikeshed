@@ -126,7 +126,7 @@ class BikeShowContainer extends Component {
   }
 
   render() {
-    let reviews = this.state.reviews.map(review => {
+    let reviews = this.state.reviews.map(review => {debugger
 
       let deleteReview = () => {
         if (confirm("Are you sure you want to delete this review?")){
@@ -146,6 +146,7 @@ class BikeShowContainer extends Component {
           checkAdmin={this.checkAdmin}
           deleteReview={deleteReview}
           current_user={this.state.current_user}
+          image={review.profile_photo}
         />
       )
     })
