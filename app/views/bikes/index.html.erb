@@ -1,6 +1,6 @@
 <h1 class="logo"> Look at all these bikes </h1>
 <br>
-<div class="row small-up-2 medium-up-3">
+<div class="row small-up-2 medium-up-2">
 <% @bikes.each do |bike| %>
 <div class="column">
   <!-- <div class="index-window"> -->
@@ -8,8 +8,8 @@
       <img class="bike-photo" src=<%= bike.profile_photo %>/>
         <div class="card-section">
 
-          <h3>
-            <%= link_to bike.model, bike_path(bike) %>
+          <h3 class="bike-link">
+            <%= link_to bike.model, bike_path(bike), {:class => "bike-link"} %>
           </h3>
           <h4>
             <%= bike.year %>

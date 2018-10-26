@@ -1,0 +1,15 @@
+.edit-bike {
+  color: orange;
+}
+
+.edit-logo {
+  color: #EE6F2E;
+  background-image: url("bikeshed_images/61110.jpg");
+  background-position: center;
+  padding: 1em;
+  text-align: center;
+  background-repeat: space;
+  align: middle;
+  font-family: 'Rye', cursive;
+  font-weight: bold;
+}

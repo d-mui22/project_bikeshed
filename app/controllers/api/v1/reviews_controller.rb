@@ -21,6 +21,8 @@ class Api::V1::ReviewsController < ApiController
     if review.save
       render json: review
     else
+      # flash[:notice] = review.errors.full_messages.join(', ')
+      # binding.pry
       render json: review.errors.full_messages
     end
   end
