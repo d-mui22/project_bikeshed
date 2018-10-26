@@ -104,7 +104,7 @@ userData = {
   it('should render user email for review in h6 tags', (done) =>{
     setTimeout(() => {
       email = wrapper.find('.email')
-      expect(email.text()).toEqual(' someone3@someplace.com    ')
+      expect(email.text()).toEqual(' someone3    ')
     done()
     }, 0)
   });
